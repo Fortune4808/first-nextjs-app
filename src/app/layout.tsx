@@ -2,6 +2,7 @@ import './globals.css';
 import type { Metadata } from "next";
 import { Inter, Poppins } from 'next/font/google';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from "@vercel/analytics/next"
 
 const bodyFont = Inter({
     subsets: ['latin'],
@@ -33,6 +34,7 @@ export default function RootLayout({
             >
                 {children}
                 <SpeedInsights/>
+                <Analytics/>
             </body>
         </html>
     );

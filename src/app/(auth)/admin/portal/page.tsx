@@ -8,9 +8,7 @@ export default function Portal() {
                 src="/all-images/background-pix/cover-pix.jpg" alt="" fill
                 className="object-cover animate__animated animate__fadeIn" priority
             />
-            <div>
-                <ContentPages/>
-            </div>
+            <ContentPages />
         </div>
     );
 }

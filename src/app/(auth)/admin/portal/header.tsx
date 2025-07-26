@@ -7,11 +7,13 @@ import { FaUsersGear } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { BiSpreadsheet } from "react-icons/bi";
+import { IoSchool } from "react-icons/io5";
 import { usePage } from "../../../../../components/context/page-context";
 import { useRef, useState, useEffect } from 'react';
 import Button from "../../../../../components/button";
 import { IoIosLogOut } from "react-icons/io";
 import { useFormContext } from "../../../../../components/context/form-context";
+import { useSideNav } from "../../../../../components/context/side-nav-context";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -70,7 +72,7 @@ export default function Header() {
                                 </li>
 
                                 <li className="flex items-center gap-2 py-[10px] px-[25px] bg-opacity-30 rounded-[5px] cursor-pointer" title="My profile" onClick={() => setForm('myProfile')}>
-                                    <CgProfile className="text-[var(--primary-color)]"/><span>My profile</span>
+                                    <CgProfile className="text-[var(--primary-color)]" /><span>My profile</span>
                                 </li>
                             </ul>
                         </nav>
@@ -95,40 +97,38 @@ export default function Header() {
                             <div ref={avatarRef} className="w-12 rounded-[50%] bg-white cursor-pointer" onClick={toggleDropdown}>
                                 <Image src="/all-images/image-pix/icon.png" width={60} height={60} alt="" title="Click To View Profile" />
                             </div>
-
-                            {shouldRender && (
-                                <div ref={dropdownRef} className={`min-w-[320px] h-[130px] bg-white shadow absolute top-[100%] right-[1%] rounded-[5px] overflow-hidden z-50 animate__animated ${isOpen ? 'animate__fadeInRight' : 'animate__fadeOutRight'}`}>
-                                    <div className="min-w-[320px] flex items-center text-[12px] gap-3 p-[15px]">
-                                        <div className="w-[90px] h-[100px] bg-black rounded-[5px]">
-                                            <Image src="/all-images/image-pix/icon.png" width={90} height={100} className="object-cover" alt="" title="Click To View Profile" />
-                                        </div>
-
-                                        <div className="flex flex-col">
-                                            <span className="font-bold">Ogunleye Opeyemi Fortune</span>
-                                            <div>User ID:{" "}<span>STF0012345345643</span></div>
-                                            <div>Phone No:{" "}<span>09056251889</span></div>
-
-                                            <div className="flex gap-2">
-                                                <Button id="submit" label="Profile" type="submit" className="w-[50%] p-[10px]" icon={CgProfile} onClick={() => console.log('Clicked')} title="Login" />
-                                                <Button id="submit" label="Log-out" type="submit" className="w-[50%] p-[10px]" icon={IoIosLogOut} onClick={() => console.log('Clicked')} title="Login" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
                         </div>
                     </div>
                 </div>
             </header>
+            {shouldRender && (
+                <div ref={dropdownRef} className={`fixed top-[70px] right-[20px] min-w-[320px] h-[130px] bg-white shadow rounded-[5px] overflow-hidden z-[999999] animate__animated ${isOpen ? 'animate__fadeInRight' : 'animate__fadeOutRight'}`}>
+                    <div className="min-w-[320px] flex items-center text-[12px] gap-3 p-[15px]">
+                        <div className="w-[90px] h-[100px] bg-black rounded-[5px]">
+                            <Image src="/all-images/image-pix/icon.png" width={90} height={100} className="object-cover" alt="" title="Click To View Profile" />
+                        </div>
+
+                        <div className="flex flex-col">
+                            <span className="font-bold">Ogunleye Opeyemi Fortune</span>
+                            <div>User ID:{" "}<span>STF0012345345643</span></div>
+                            <div>Phone No:{" "}<span>09056251889</span></div>
+
+                            <div className="flex gap-2">
+                                <Button id="submit" label="Profile" type="submit" className="w-[50%] p-[10px]" icon={CgProfile} onClick={() => console.log('Clicked')} title="Login" />
+                                <Button id="submit" label="Log-out" type="submit" className="w-[50%] p-[10px]" icon={IoIosLogOut} onClick={() => console.log('Clicked')} title="Login" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
             <SideNav />
         </div>
     );
 }
 
-
-
 function SideNav() {
     const { setPage } = usePage();
+    const { setSideNav } = useSideNav();
     return (
         <nav aria-label="Main Navigation" className="w-[90px] h-full bg-white shadow fixed">
             <ul className="flex flex-col pt-[70px] text-sm w-full text-[#333]">
@@ -150,6 +150,11 @@ function SideNav() {
                 <li title="Students" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">
                     <FaUsersGear className="text-[20px]" />
                     <span>Students</span>
+                </li>
+
+                <li title="Students" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setSideNav('session')}>
+                    <IoSchool className="text-[20px]" />
+                    <span>Session</span>
                 </li>
 
                 <li title="Attendance" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">

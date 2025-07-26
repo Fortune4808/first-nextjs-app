@@ -1,22 +1,36 @@
 'use client';
 import { createContext, useContext, useState, ReactNode } from 'react';
+import { useSideNav } from './side-nav-context';
 
 type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | null;
 
 type FormContextType = {
     form: FormType;
-    setForm: (form: FormType) => void;
-    handleClose:()=> void;
+    id?: string;
+    setForm: (form: FormType, id?: string) => void;
+    handleClose: () => void;
 };
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
 
 export function FormProvider({ children }: { children: ReactNode }) {
-    const [form, setForm] = useState<FormType>(null);
-    const handleClose = () => setForm(null);
+    const [form, setFormState] = useState<FormType>(null);
+    const [id, setId] = useState<string | undefined>(undefined);
+    const { setSideNav } = useSideNav();
+
+    const setForm = (form: FormType, id?: string) => {
+        setFormState(form);
+        setId(id);
+        setSideNav(undefined);
+    };
+
+    const handleClose = () => {
+        setFormState(null);
+        setId(undefined);
+    };
 
     return (
-        <FormContext.Provider value={{ form, setForm, handleClose }}>
+        <FormContext.Provider value={{ form, setForm, handleClose, id }}>
             {children}
         </FormContext.Provider>
     );

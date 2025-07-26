@@ -1,5 +1,6 @@
 'use client';
 import { createContext, useContext, useState, ReactNode } from 'react';
+import { useSideNav } from './side-nav-context';
 
 type PageContextType = {
     page: 'dashboard' | 'department';
@@ -9,7 +10,13 @@ type PageContextType = {
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export function PageProvider({ children }: { children: ReactNode }) {
-    const [page, setPage] = useState<'dashboard' | 'department'>('dashboard');
+    const [page, setPageState] = useState<'dashboard' | 'department'>('dashboard');
+    const { setSideNav } = useSideNav();
+
+    const setPage = (page: 'dashboard' | 'department') => {
+        setPageState(page);
+        setSideNav(undefined); 
+    };
 
     return (
         <PageContext.Provider value={{ page, setPage }}>

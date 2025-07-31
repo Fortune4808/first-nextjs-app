@@ -3,6 +3,7 @@ import Image from "next/image"
 import { AiOutlineDashboard } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { LuSchool } from "react-icons/lu";
+import { FaBook } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
@@ -129,6 +130,8 @@ export default function Header() {
 function SideNav() {
     const { setPage } = usePage();
     const { setSideNav } = useSideNav();
+    const { setForm } = useFormContext();
+    
     return (
         <nav aria-label="Main Navigation" className="w-[90px] h-full bg-white shadow fixed">
             <ul className="flex flex-col pt-[70px] text-sm w-full text-[#333]">
@@ -140,6 +143,11 @@ function SideNav() {
                 <li title="Department" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('department')}>
                     <LuSchool className="text-[20px]" />
                     <span>Department</span>
+                </li>
+
+                <li title="Department" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('course')}>
+                    <FaBook className="text-[20px]" />
+                    <span>Course</span>
                 </li>
 
                 <li title="Staff" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">
@@ -157,7 +165,7 @@ function SideNav() {
                     <span>Session</span>
                 </li>
 
-                <li title="Attendance" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">
+                <li title="Attendance" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setForm('scan')}>
                     <BiSpreadsheet className="text-[20px]" />
                     <span>Attendance</span>
                 </li>

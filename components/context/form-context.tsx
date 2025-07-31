@@ -2,7 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { useSideNav } from './side-nav-context';
 
-type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | null;
+type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | 'addCourse' | 'scan' | null;
 
 type FormContextType = {
     form: FormType;

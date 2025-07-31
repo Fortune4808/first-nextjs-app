@@ -3,17 +3,17 @@ import { createContext, useContext, useState, ReactNode } from 'react';
 import { useSideNav } from './side-nav-context';
 
 type PageContextType = {
-    page: 'dashboard' | 'department';
-    setPage: (page: 'dashboard' | 'department') => void;
+    page: 'dashboard' | 'department' | 'course';
+    setPage: (page: 'dashboard' | 'department' | 'course') => void;
 };
 
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export function PageProvider({ children }: { children: ReactNode }) {
-    const [page, setPageState] = useState<'dashboard' | 'department'>('dashboard');
+    const [page, setPageState] = useState<'dashboard' | 'department' | 'course'>('dashboard');
     const { setSideNav } = useSideNav();
 
-    const setPage = (page: 'dashboard' | 'department') => {
+    const setPage = (page: 'dashboard' | 'department' | 'course') => {
         setPageState(page);
         setSideNav(undefined); 
     };

@@ -6,9 +6,11 @@ import { NavProvider, useSideNav } from "./context/side-nav-context";
 import Header from "@/app/(auth)/admin/portal/header";
 import Main from "./get-page/main";
 import Department from "./get-page/department";
+import Course from "./get-page/course";
 import AddDepartment from "./get-form/add-department";
 import MyProfile from "./get-form/myprofile";
 import Session from "./get-side-nav/session";
+import Scan from "./get-form/scan";
 
 function ContentBody() {
     const { page } = usePage();
@@ -20,6 +22,7 @@ function ContentBody() {
                     <div key={page} className="w-[98%] py-[5px] animate__animated animate__fadeIn">
                         {page === 'dashboard' && <Main />}
                         {page === 'department' && <Department />}
+                        {page === 'course' && <Course/>}
                     </div>
                 </div>
             </main>
@@ -35,6 +38,7 @@ function ContentForm() {
         <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/40">
             {form === 'addDepartment' && <AddDepartment onClose={handleClose} />}
             {form === 'myProfile' && <MyProfile id={id ?? ''} onClose={handleClose} />}
+            {form === 'scan' && <Scan id={id ?? ''} onClose={handleClose}/>}
         </div>
     );
 }

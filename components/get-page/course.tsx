@@ -1,9 +1,9 @@
-import { LuSchool } from "react-icons/lu";
+import { FaBook } from "react-icons/fa";
 import Button from "../button";
 import InputField from "../input";
 import { useFormContext } from "../context/form-context";
 
-export default function Main() {
+export default function Course() {
     const { setForm } = useFormContext();
 
     return (
@@ -11,16 +11,16 @@ export default function Main() {
             <div className="w-full min-h-[80px] bg-white/90 rounded flex justify-center items-center text-black">
                 <div className="w-[98%] flex justify-between items-center">
                     <div className="flex flex-col">
-                        <div className="flex items-center gap-1 font-bold"><LuSchool className="text-[var(--primary-color)]" />Department</div>
+                        <div className="flex items-center gap-1 font-bold"><FaBook className="text-[var(--primary-color)]" />Course</div>
                         <div className="flex items-center gap-1 text-[#333] text-[13px]">Active:
                             <span className="text-[var(--primary-color)]">0</span>{" "}| Suspended:<span className="text-[var(--primary-color)]">0</span>
                         </div>
                     </div>
 
-                    <div className="w-[50%] flex items-center gap-2">
+                    <div className="w-[60%] flex items-center gap-2">
                         <InputField
                             id=""
-                            label="Type here to search department"
+                            label="Type here to search course"
                             className="!h-[50px]"
                         // value={}
                         // onChange={(e) => setPassowrd(e.target.value)}
@@ -28,10 +28,18 @@ export default function Main() {
 
                         <Button
                             id="submit"
-                            label="ADD NEW DEPARTMENT"
+                            label="ADD NEW COURSE"
                             type="submit" className="p-[15px]"
-                            icon={LuSchool} onClick={() => {setForm('addDepartment')}}
-                            title="ADD NEW DEPARTMENT"
+                            icon={FaBook} onClick={() => { setForm('addCourse') }}
+                            title="ADD NEW COURSE"
+                        />
+
+                        <Button
+                            id="submit"
+                            label="ASSIGNED LECTURER TO COURSE"
+                            type="submit" className="p-[15px]"
+                            icon={FaBook} onClick={() => { setForm('addCourse') }}
+                            title="ASSIGNED LECTURER TO COURSE"
                         />
                     </div>
                 </div>
@@ -42,10 +50,12 @@ export default function Main() {
                     <thead>
                         <tr>
                             <th>SN</th>
-                            <th>DEPARTMENT NAME</th>
+                            <th>COURSE CODE</th>
+                            <th>COURSE NAME</th>
+                            <th>LEVEL</th>
+                            <th>CREDIT UNIT</th>
+                            <th>SEMESTER</th>
                             <th>CREATED BY</th>
-                            <th>NUMBER OF STAFF</th>
-                            <th>NUMBER OF STUDENTS</th>
                             <th>DATE</th>
                             <th>STATUS</th>
                         </tr>
@@ -53,41 +63,24 @@ export default function Main() {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>COMPUTER SCIENCE</td>
-                            <td>ADMINISTATOR</td>
-                            <td>10</td>
-                            <td>10</td>
+                            <td>CSC101</td>
+                            <td>INTRO TO COMPUTER</td>
+                            <td>100</td>
+                            <td>3</td>
+                            <td>FIRST</td>
+                            <td>ADMINISTRATOR</td>
                             <td>10/05/2025</td>
                             <td>ACTIVE</td>
                         </tr>
-
                         <tr>
-                            <td>1</td>
-                            <td>COMPUTER SCIENCE</td>
-                            <td>ADMINISTATOR</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10/05/2025</td>
-                            <td>ACTIVE</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>COMPUTER SCIENCE</td>
-                            <td>ADMINISTATOR</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10/05/2025</td>
-                            <td>ACTIVE</td>
-                        </tr>
-
-                        <tr>
-                            <td>1</td>
-                            <td>COMPUTER SCIENCE</td>
-                            <td>ADMINISTATOR</td>
-                            <td>10</td>
-                            <td>10</td>
-                            <td>10/05/2025</td>
+                            <td>2</td>
+                            <td>MTH102</td>
+                            <td>CALCULUS I</td>
+                            <td>100</td>
+                            <td>2</td>
+                            <td>SECOND</td>
+                            <td>HEAD OF DEPARTMENT</td>
+                            <td>11/05/2025</td>
                             <td>ACTIVE</td>
                         </tr>
                     </tbody>

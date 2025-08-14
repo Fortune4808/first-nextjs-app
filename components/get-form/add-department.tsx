@@ -24,16 +24,14 @@ export default function AddDepartment({ onClose }: AddDepartmentProps) {
 
                     <div className="my-5 flex flex-col gap-3">
                         <InputField
-                            id=""
                             label="Department Name"
                             className="!h-[50px]"
                         />
 
                         <Button
-                            id="submit"
                             label="SUBMIT"
                             type="submit" className="p-[15px] w-[40%]"
-                            icon={FaCheckDouble} onClick={() => {console.log('addDepartment')}}
+                            icon={<FaCheckDouble/>} onClick={() => {console.log('addDepartment')}}
                             title="SUBMIT"
                         />
                     </div>

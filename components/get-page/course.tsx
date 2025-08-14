@@ -19,7 +19,6 @@ export default function Course() {
 
                     <div className="w-[60%] flex items-center gap-2">
                         <InputField
-                            id=""
                             label="Type here to search course"
                             className="!h-[50px]"
                         // value={}
@@ -27,18 +26,16 @@ export default function Course() {
                         />
 
                         <Button
-                            id="submit"
                             label="ADD NEW COURSE"
                             type="submit" className="p-[15px]"
-                            icon={FaBook} onClick={() => { setForm('addCourse') }}
+                            icon={<FaBook/>} onClick={() => { setForm('addCourse') }}
                             title="ADD NEW COURSE"
                         />
 
                         <Button
-                            id="submit"
                             label="ASSIGNED LECTURER TO COURSE"
                             type="submit" className="p-[15px]"
-                            icon={FaBook} onClick={() => { setForm('addCourse') }}
+                            icon={<FaBook/>} onClick={() => { setForm('addCourse') }}
                             title="ASSIGNED LECTURER TO COURSE"
                         />
                     </div>
@@ -92,7 +89,6 @@ export default function Course() {
 
                         <div className="flex gap-2.5">
                             <Button
-                                id=""
                                 label="PREVIOUS"
                                 type="submit" className="py-[10px] px-[25px]"
                                 onClick={() => console.log('Clicked')}
@@ -100,7 +96,6 @@ export default function Course() {
                             />
 
                             <Button
-                                id=""
                                 label="NEXT"
                                 type="submit" className="py-[10px] px-[25px]"
                                 onClick={() => console.log('Clicked')}

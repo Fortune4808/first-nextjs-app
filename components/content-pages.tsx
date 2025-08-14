@@ -17,7 +17,7 @@ function ContentBody() {
 
     return (
         <>
-            <main className="absolute w-[calc(100%-90px)] h-[calc(100%-70px)] right-0 top-[70px] overflow-auto">
+            <div className="absolute w-[calc(100%-90px)] h-[calc(100%-70px)] right-0 top-[70px] overflow-auto">
                 <div className="w-full h-full flex justify-center">
                     <div key={page} className="w-[98%] py-[5px] animate__animated animate__fadeIn">
                         {page === 'dashboard' && <Main />}
@@ -25,7 +25,7 @@ function ContentBody() {
                         {page === 'course' && <Course/>}
                     </div>
                 </div>
-            </main>
+            </div>
         </>
     );
 }

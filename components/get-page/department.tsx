@@ -2,9 +2,34 @@ import { LuSchool } from "react-icons/lu";
 import Button from "../button";
 import InputField from "../input";
 import { useFormContext } from "../context/form-context";
+import { useState, useEffect } from "react";
 
-export default function Main() {
+export default function Department() {
     const { setForm } = useFormContext();
+
+    const [status, setStatus] = useState([]);
+
+    useEffect(() => {
+        async function loadStatus() {
+            try {
+                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/status`, {
+                    headers: { 'x-api-key': process.env.NEXT_PUBLIC_API_KEY ?? ""},
+                });
+
+                if (!res.ok) {
+                    throw new Error(`Failed to fetch status: ${res.status}`);
+                }
+
+                const json = await res.json();
+                setStatus(json.data);
+
+            } catch (error) {
+                console.error("Failed to fetch status:", error);
+            }
+        }
+
+        loadStatus();
+    }, []);
 
     return (
         <div className="flex flex-col gap-2 pb-[20px]">
@@ -19,7 +44,6 @@ export default function Main() {
 
                     <div className="w-[50%] flex items-center gap-2">
                         <InputField
-                            id=""
                             label="Type here to search department"
                             className="!h-[50px]"
                         // value={}
@@ -27,10 +51,9 @@ export default function Main() {
                         />
 
                         <Button
-                            id="submit"
                             label="ADD NEW DEPARTMENT"
                             type="submit" className="p-[15px]"
-                            icon={LuSchool} onClick={() => {setForm('addDepartment')}}
+                            icon={<LuSchool/>} onClick={() => { setForm('addDepartment') }}
                             title="ADD NEW DEPARTMENT"
                         />
                     </div>
@@ -99,7 +122,6 @@ export default function Main() {
 
                         <div className="flex gap-2.5">
                             <Button
-                                id=""
                                 label="PREVIOUS"
                                 type="submit" className="py-[10px] px-[25px]"
                                 onClick={() => console.log('Clicked')}
@@ -107,7 +129,6 @@ export default function Main() {
                             />
 
                             <Button
-                                id=""
                                 label="NEXT"
                                 type="submit" className="py-[10px] px-[25px]"
                                 onClick={() => console.log('Clicked')}

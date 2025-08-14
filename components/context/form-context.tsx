@@ -1,15 +1,7 @@
 'use client';
+import { FormContextType, FormType } from '../types/user';
 import { createContext, useContext, useState, ReactNode } from 'react';
 import { useSideNav } from './side-nav-context';
-
-type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | 'addCourse' | 'scan' | null;
-
-type FormContextType = {
-    form: FormType;
-    id?: string;
-    setForm: (form: FormType, id?: string) => void;
-    handleClose: () => void;
-};
 
 const FormContext = createContext<FormContextType | undefined>(undefined);
 

@@ -3,6 +3,7 @@ import { useState } from 'react';
 import InputField from './input';
 import Button from './button';
 import { FaCheckDouble } from 'react-icons/fa';
+import { FaSpinner } from "react-icons/fa";
 
 export default function AuthForm() {
     const [formType, setFormType] = useState<'login' | 'reset'>('login');
@@ -29,8 +30,52 @@ export default function AuthForm() {
 }
 
 function LoginForm({ onResetClick }: { onResetClick: () => void }) {
-    const [email, setEmail] = useState('');
-    const [password, setPassowrd] = useState('');
+    const [emailAddress, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loading, setLoading] = useState(false);
+
+    async function submitLogin() {
+        if (!emailAddress.trim()) {
+            alert("Email Address is Required!");
+            return
+        }
+
+        if (!password.trim()) {
+            alert("Passord is Required!");
+            return
+        }
+        setLoading(true);
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/admin/login`, {
+                cache: 'no-store',
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'x-api-key': process.env.NEXT_PUBLIC_API_KEY ?? ''
+                },
+                body: JSON.stringify({ emailAddress, password })
+            });
+
+            const data = await response.json();
+            if (!response.ok) {
+                alert(data.message);
+                return;
+            }
+
+            if (data.success) {
+                sessionStorage.setItem('accessToken', data.token);
+                sessionStorage.setItem('data', JSON.stringify(data.data));
+                window.location.href = '/admin/portal';
+            } else {
+                alert(data.message);
+            }
+
+        } catch (error) {
+            alert(error);
+        } finally {
+            setLoading(false);
+        }
+    }
 
     return (
         <>
@@ -39,28 +84,26 @@ function LoginForm({ onResetClick }: { onResetClick: () => void }) {
             </div>
 
             <InputField
-                id="emailAddress"
                 label="Enter Your Email Address"
-                value={email}
+                value={emailAddress}
                 onChange={(e) => setEmail(e.target.value)}
             />
 
             <InputField
-                id="password"
                 label="Enter Your Password"
                 type="password"
                 value={password}
-                onChange={(e) => setPassowrd(e.target.value)}
+                onChange={(e) => setPassword(e.target.value)}
             />
 
             <Button
-                id="submit"
-                label="LOG-IN"
+                label={loading ? 'AUTHENTICATING...' : 'LOG-IN'}
                 type="submit"
-                icon={FaCheckDouble}
-                onClick={() => console.log('Clicked')}
+                icon={loading ? <FaSpinner className='animate-spin' /> : <FaCheckDouble />}
+                onClick={submitLogin}
                 title="Login"
                 className='p-[20px] w-[50%]'
+                disabled={loading}
             />
 
             <div className="bg-[#F8F1EE] text-[#838F90] text-sm font-bold border-[#F3BEA4] border-[1px] py-[14px] px-[15px] rounded-[5px]">Forget Password?{" "}
@@ -77,17 +120,15 @@ function ResetForm({ onBackClick }: { onBackClick: () => void }) {
         <>
             <div className="bg-[#EFF7F2] text-[#838F90] text-sm font-bold border-[#A3E5BF] border-[1px] py-[10px] px-[15px] rounded-[5px]">Kindly, provide your{" "}<span className="text-[#50A5DF]">EMAIL ADDRESS </span>to reset your password</div>
             <InputField
-                id="emailAddress"
                 label="Enter Your Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
             />
 
             <Button
-                id="submit"
                 label="PROCEED"
                 type="submit"
-                icon={FaCheckDouble}
+                icon={<FaCheckDouble />}
                 onClick={() => console.log('Clicked')}
                 title="Proceed"
                 className='p-[20px] w-[50%]'

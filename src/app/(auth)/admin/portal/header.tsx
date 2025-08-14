@@ -15,6 +15,8 @@ import Button from "../../../../../components/button";
 import { IoIosLogOut } from "react-icons/io";
 import { useFormContext } from "../../../../../components/context/form-context";
 import { useSideNav } from "../../../../../components/context/side-nav-context";
+import { User } from "../../../../../components/types/user";
+import { capitalizeWords } from "../../../../../components/stringutils";
 
 export default function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -59,6 +61,17 @@ export default function Header() {
     const { setPage } = usePage();
     const { setForm } = useFormContext();
 
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        const userData = sessionStorage.getItem('data');
+        if (userData) {
+            setUser(JSON.parse(userData));
+        }
+    }, []);
+
+    const fullName = `${user?.firstName} ${user?.middleName} ${user?.lastName}`;
+
     return (
         <div className="absolute inset-0">
             <header className="fixed w-full min-h-[70px] bg-white shadow flex justify-center z-10">
@@ -91,8 +104,8 @@ export default function Header() {
                             </div>
 
                             <div className="flex flex-col px-[20px] text-[12px] border-l-2 border-dotted">
-                                <div className="font-bold">Ogunleye Opeyemi Fortune</div>
-                                <div className="text-[var(--primary-color)]">Supper Admin</div>
+                                <div className="font-bold">{capitalizeWords(fullName)}</div>
+                                <div className="text-[var(--primary-color)]">{capitalizeWords(user?.role?.roleName ?? '')}</div>
                             </div>
 
                             <div ref={avatarRef} className="w-12 rounded-[50%] bg-white cursor-pointer" onClick={toggleDropdown}>
@@ -110,13 +123,13 @@ export default function Header() {
                         </div>
 
                         <div className="flex flex-col">
-                            <span className="font-bold">Ogunleye Opeyemi Fortune</span>
-                            <div>User ID:{" "}<span>STF0012345345643</span></div>
-                            <div>Phone No:{" "}<span>09056251889</span></div>
+                            <span className="font-bold">{capitalizeWords(fullName)}</span>
+                            <div>User ID:{" "}<span>{user?.staffId}</span></div>
+                            <div>Phone No:{" "}<span>{user?.mobileNumber}</span></div>
 
                             <div className="flex gap-2">
-                                <Button id="submit" label="Profile" type="submit" className="w-[50%] p-[10px]" icon={CgProfile} onClick={() => console.log('Clicked')} title="Login" />
-                                <Button id="submit" label="Log-out" type="submit" className="w-[50%] p-[10px]" icon={IoIosLogOut} onClick={() => console.log('Clicked')} title="Login" />
+                                <Button label="Profile" type="submit" className="w-[50%] p-[10px]" icon={<CgProfile />} onClick={() => console.log('Clicked')} title="Login" />
+                                <Button label="Log-out" type="submit" className="w-[50%] p-[10px]" icon={<IoIosLogOut />} onClick={() => console.log('Clicked')} title="Login" />
                             </div>
                         </div>
                     </div>
@@ -131,7 +144,7 @@ function SideNav() {
     const { setPage } = usePage();
     const { setSideNav } = useSideNav();
     const { setForm } = useFormContext();
-    
+
     return (
         <nav aria-label="Main Navigation" className="w-[90px] h-full bg-white shadow fixed">
             <ul className="flex flex-col pt-[70px] text-sm w-full text-[#333]">

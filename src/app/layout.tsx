@@ -32,7 +32,7 @@ export default function RootLayout({
             <body
                 className={`${bodyFont.className} ${titleFont.variable} antialiased`}
             >
-                {children}
+                <main>{children}</main>
                 <SpeedInsights/>
                 <Analytics/>
             </body>

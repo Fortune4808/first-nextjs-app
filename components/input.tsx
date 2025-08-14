@@ -1,5 +1,4 @@
 interface FloatingInputProps {
-    id: string;
     label: string;
     type?: string;
     value?: string;
@@ -7,17 +6,17 @@ interface FloatingInputProps {
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const InputField = ({ id, label, type = 'text', value, className ='', onChange, }: FloatingInputProps) => {
+const InputField = (props:FloatingInputProps) => {
     return (
         <div className="form-group">
             <input
-                type={type} id={id} title={label}
-                className={`floating-input ${className}`} placeholder=" "
-                required value={value} onChange={onChange}
+                type={props.type} title={props.label}
+                className={`floating-input ${props.className}`} placeholder=" "
+                required value={props.value} onChange={props.onChange}
             />
             <label
-                htmlFor={id}
-                className="floating-label">{label}
+                htmlFor={props.label}
+                className="floating-label">{props.label}
             </label>
         </div>
     );

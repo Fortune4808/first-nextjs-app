@@ -6,10 +6,10 @@ import { useSideNav } from './side-nav-context';
 const PageContext = createContext<PageContextType | undefined>(undefined);
 
 export function PageProvider({ children }: { children: ReactNode }) {
-    const [page, setPageState] = useState<'dashboard' | 'department' | 'course'>('dashboard');
+    const [page, setPageState] = useState<'dashboard' | 'staff' | 'school'>('dashboard');
     const { setSideNav } = useSideNav();
 
-    const setPage = (page: 'dashboard' | 'department' | 'course') => {
+    const setPage = (page: 'dashboard' | 'staff' | 'school') => {
         setPageState(page);
         setSideNav(undefined);
     };

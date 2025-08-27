@@ -4,7 +4,7 @@ import InputField from "../input";
 import { useFormContext } from "../context/form-context";
 import { useState, useEffect } from "react";
 
-export default function Department() {
+export default function School() {
     const { setForm } = useFormContext();
 
     const [status, setStatus] = useState([]);

@@ -1,11 +1,6 @@
 'use client';
 import { createContext, useContext, useState, ReactNode } from 'react';
-
-type NavContextType = {
-    sideNav: 'session' | undefined;
-    setSideNav: (sideNav: 'session' | undefined) => void;
-    handleClose: () => void;
-};
+import { NavContextType } from '../types/user';
 
 const NavContext = createContext<NavContextType | undefined>(undefined);
 

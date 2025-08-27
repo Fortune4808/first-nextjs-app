@@ -5,8 +5,8 @@ import { FormProvider, useFormContext } from "./context/form-context";
 import { NavProvider, useSideNav } from "./context/side-nav-context";
 import Header from "@/app/(auth)/admin/portal/header";
 import Main from "./get-page/main";
-import Department from "./get-page/department";
-import Course from "./get-page/course";
+import School from "./get-page/school";
+import Staff from "./get-page/staff";
 import AddDepartment from "./get-form/add-department";
 import MyProfile from "./get-form/myprofile";
 import Session from "./get-side-nav/session";
@@ -17,12 +17,12 @@ function ContentBody() {
 
     return (
         <>
-            <div className="absolute w-[calc(100%-90px)] h-[calc(100%-70px)] right-0 top-[70px] overflow-auto">
-                <div className="w-full h-full flex justify-center">
-                    <div key={page} className="w-[98%] py-[5px] animate__animated animate__fadeIn">
+            <div className="absolute pl-[90px] top-[70px] h-full w-full">
+                <div key={page} className="w-full h-[calc(100%-80px)] flex justify-center overflow-auto scrollbar-hidden animate__animated animate__fadeIn">
+                    <div className="w-[99%] h-full pt-[5px]">
                         {page === 'dashboard' && <Main />}
-                        {page === 'department' && <Department />}
-                        {page === 'course' && <Course/>}
+                        {page === 'staff' && <Staff/>}
+                        {page === 'school' && <School/>}
                     </div>
                 </div>
             </div>

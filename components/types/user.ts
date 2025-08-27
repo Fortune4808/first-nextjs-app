@@ -1,7 +1,14 @@
 export type PageContextType = {
-    page: 'dashboard' | 'department' | 'course';
-    setPage: (page: 'dashboard' | 'department' | 'course') => void;
+    page: 'dashboard' | 'staff' | 'school';
+    setPage: (page: 'dashboard' | 'staff' | 'school') => void;
 };
+
+export type NavContextType = {
+    sideNav: 'session' | undefined;
+    setSideNav: (sideNav: 'session' | undefined) => void;
+    handleClose: () => void;
+};
+
 
 export type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | 'addCourse' | 'scan' | null;
 

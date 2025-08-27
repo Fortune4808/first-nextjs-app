@@ -1,9 +1,9 @@
-import { FaBook } from "react-icons/fa";
+import { FaUsers } from "react-icons/fa";
 import Button from "../button";
 import InputField from "../input";
 import { useFormContext } from "../context/form-context";
 
-export default function Course() {
+export default function Staff() {
     const { setForm } = useFormContext();
 
     return (
@@ -11,7 +11,7 @@ export default function Course() {
             <div className="w-full min-h-[80px] bg-white/90 rounded flex justify-center items-center text-black">
                 <div className="w-[98%] flex justify-between items-center">
                     <div className="flex flex-col">
-                        <div className="flex items-center gap-1 font-bold"><FaBook className="text-[var(--primary-color)]" />Course</div>
+                        <div className="flex items-center gap-1 font-bold"><FaUsers className="text-[var(--primary-color)]" />Administrators</div>
                         <div className="flex items-center gap-1 text-[#333] text-[13px]">Active:
                             <span className="text-[var(--primary-color)]">0</span>{" "}| Suspended:<span className="text-[var(--primary-color)]">0</span>
                         </div>
@@ -19,24 +19,17 @@ export default function Course() {
 
                     <div className="w-[60%] flex items-center gap-2">
                         <InputField
-                            label="Type here to search course"
+                            label="Type here to search staff"
                             className="!h-[50px]"
                         // value={}
                         // onChange={(e) => setPassowrd(e.target.value)}
                         />
 
                         <Button
-                            label="ADD NEW COURSE"
+                            label="ADD NEW STAFF"
                             type="submit" className="p-[15px]"
-                            icon={<FaBook/>} onClick={() => { setForm('addCourse') }}
-                            title="ADD NEW COURSE"
-                        />
-
-                        <Button
-                            label="ASSIGNED LECTURER TO COURSE"
-                            type="submit" className="p-[15px]"
-                            icon={<FaBook/>} onClick={() => { setForm('addCourse') }}
-                            title="ASSIGNED LECTURER TO COURSE"
+                            icon={<FaUsers/>} onClick={() => { setForm('addCourse') }}
+                            title="Add New Staff"
                         />
                     </div>
                 </div>

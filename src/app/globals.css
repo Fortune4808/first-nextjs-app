@@ -7,12 +7,24 @@
     .font-title {
         font-family: var(--font-title);
     }
+
+    .scrollbar-hidden::-webkit-scrollbar {
+        display: none;
+    }
+
+    .scrollbar-hidden {
+        -ms-overflow-style: none;
+        /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+    }
 }
 
 :root {
     --background: #ffffff;
     --foreground: #171717;
     --primary-color: #002B00;
+    --border-left-color: #be1d1d;
 }
 
 @theme inline {
@@ -33,4 +45,3 @@ body {
     background: var(--background);
     color: var(--foreground);
 }
-

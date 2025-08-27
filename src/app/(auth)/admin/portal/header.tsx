@@ -38,10 +38,7 @@ export default function Header() {
         const handleClickOutside = (event: MouseEvent) => {
             const target = event.target as Node;
 
-            if (
-                dropdownRef.current?.contains(target) ||
-                avatarRef.current?.contains(target)
-            ) {
+            if (dropdownRef.current?.contains(target) || avatarRef.current?.contains(target)) {
                 return;
             }
 
@@ -142,45 +139,23 @@ export default function Header() {
 
 function SideNav() {
     const { setPage } = usePage();
-    const { setSideNav } = useSideNav();
-    const { setForm } = useFormContext();
 
     return (
-        <nav aria-label="Main Navigation" className="w-[90px] h-full bg-white shadow fixed">
+        <nav aria-label="Main Navigation" className="w-[90px] h-full bg-white shadow fixed z-5">
             <ul className="flex flex-col pt-[70px] text-sm w-full text-[#333]">
-                <li title="Dashboard" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('dashboard')}>
+                <li title="Dashboard" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[var(--border-left-color)] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('dashboard')}>
                     <AiOutlineDashboard className="text-[20px]" />
                     <span>Dashboard</span>
                 </li>
 
-                <li title="Department" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('department')}>
-                    <LuSchool className="text-[20px]" />
-                    <span>Department</span>
-                </li>
-
-                <li title="Department" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('course')}>
+                <li title="Staff" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[var(--border-left-color)] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('staff')}>
                     <FaBook className="text-[20px]" />
-                    <span>Course</span>
-                </li>
-
-                <li title="Staff" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">
-                    <FaUsersGear className="text-[20px]" />
                     <span>Staff</span>
                 </li>
 
-                <li title="Students" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer">
-                    <FaUsersGear className="text-[20px]" />
-                    <span>Students</span>
-                </li>
-
-                <li title="Students" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setSideNav('session')}>
-                    <IoSchool className="text-[20px]" />
-                    <span>Session</span>
-                </li>
-
-                <li title="Attendance" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[#be1d1d] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setForm('scan')}>
-                    <BiSpreadsheet className="text-[20px]" />
-                    <span>Attendance</span>
+                <li title="School" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[var(--border-left-color)] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('school')}>
+                    <LuSchool className="text-[20px]" />
+                    <span>School</span>
                 </li>
             </ul>
         </nav>

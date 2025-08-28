@@ -1,7 +1,7 @@
 import { FaUsers } from "react-icons/fa";
-import Button from "../button";
-import InputField from "../input";
-import { useFormContext } from "../context/form-context";
+import Button from "../../../../../../components/ui/button";
+import InputField from "../../../../../../components/ui/input";
+import { useFormContext } from "../../../../../../components/context/form-context";
 
 export default function Staff() {
     const { setForm } = useFormContext();

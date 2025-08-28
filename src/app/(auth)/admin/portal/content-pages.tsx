@@ -1,28 +1,35 @@
 'use client';
 import { useEffect, useState } from "react";
-import { PageProvider, usePage } from "./context/page-context";
-import { FormProvider, useFormContext } from "./context/form-context";
-import { NavProvider, useSideNav } from "./context/side-nav-context";
+import { PageProvider, usePage } from "../../../../../components/context/page-context";
+import { FormProvider, useFormContext } from "../../../../../components/context/form-context";
+import { NavProvider, useSideNav } from "../../../../../components/context/side-nav-context";
+import dynamic from "next/dynamic";
+import Loader from "../../../../../components/loading/loader";
 import Header from "@/app/(auth)/admin/portal/header";
-import Main from "./get-page/main";
-import School from "./get-page/school";
-import Staff from "./get-page/staff";
-import AddDepartment from "./get-form/add-department";
-import MyProfile from "./get-form/myprofile";
 import Session from "./get-side-nav/session";
 import Scan from "./get-form/scan";
 
 function ContentBody() {
     const { page } = usePage();
 
+    const MainDashboard = dynamic(() => import("./get-page/main"), {
+        loading: () => <Loader />,
+    });
+    const StaffPage = dynamic(() => import("./get-page/staff"), {
+        loading: () => <Loader />,
+    });
+    const SchoolPage = dynamic(() => import("./get-page/school"), {
+        loading: () => <Loader />,
+    });
+
     return (
         <>
             <div className="absolute pl-[90px] top-[70px] h-full w-full">
                 <div key={page} className="w-full h-[calc(100%-80px)] flex justify-center overflow-auto scrollbar-hidden animate__animated animate__fadeIn">
                     <div className="w-[99%] h-full pt-[5px]">
-                        {page === 'dashboard' && <Main />}
-                        {page === 'staff' && <Staff/>}
-                        {page === 'school' && <School/>}
+                        {page === 'dashboard' && <MainDashboard />}
+                        {page === 'staff' && <StaffPage />}
+                        {page === 'school' && <SchoolPage />}
                     </div>
                 </div>
             </div>
@@ -34,11 +41,18 @@ function ContentForm() {
     const { form, handleClose, id } = useFormContext();
     if (!form) return null;
 
+    const AddDepartmentForm = dynamic(() => import("./get-form/add-department"), {
+        loading: () => <Loader />,
+    });
+    const MyProfileForm = dynamic(() => import("./get-form/myprofile"), {
+        loading: () => <Loader />,
+    });
+
     return (
         <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/40">
-            {form === 'addDepartment' && <AddDepartment onClose={handleClose} />}
-            {form === 'myProfile' && <MyProfile id={id ?? ''} onClose={handleClose} />}
-            {form === 'scan' && <Scan id={id ?? ''} onClose={handleClose}/>}
+            {/* {form === 'addStaff' && <AddDepartmentForm onClose={handleClose} />} */}
+            {form === 'myProfile' && <MyProfileForm id={id ?? ''} onClose={handleClose} />}
+            {form === 'scan' && <Scan id={id ?? ''} onClose={handleClose} />}
         </div>
     );
 }
@@ -67,7 +81,7 @@ function ContentNav() {
             onClick={handleClose}
         >
             <div onClick={(e) => e.stopPropagation()}>
-                {sideNav === 'session' && <Session/>}
+                {sideNav === 'session' && <Session />}
             </div>
         </div>
     );

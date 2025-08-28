@@ -1,7 +1,7 @@
 import { FaGoogleScholar } from "react-icons/fa6";
 import { IoClose } from "react-icons/io5";
-import InputField from "../input";
-import Button from "../button";
+import InputField from "../../../../../../components/ui/input";
+import Button from "../../../../../../components/ui/button";
 import { FaCheckDouble } from 'react-icons/fa';
 
 type AddDepartmentProps = {

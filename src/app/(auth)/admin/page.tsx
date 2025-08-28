@@ -1,5 +1,5 @@
 import Image from "next/image";
-import AuthForm from "../../../../components/login";
+import AuthForm from "./auth";
 
 export default function Admin() {
     return (

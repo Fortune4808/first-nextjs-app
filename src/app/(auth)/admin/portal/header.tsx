@@ -11,7 +11,7 @@ import { BiSpreadsheet } from "react-icons/bi";
 import { IoSchool } from "react-icons/io5";
 import { usePage } from "../../../../../components/context/page-context";
 import { useRef, useState, useEffect } from 'react';
-import Button from "../../../../../components/button";
+import Button from "../../../../../components/ui/button";
 import { IoIosLogOut } from "react-icons/io";
 import { useFormContext } from "../../../../../components/context/form-context";
 import { useSideNav } from "../../../../../components/context/side-nav-context";

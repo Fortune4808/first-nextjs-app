@@ -7,7 +7,7 @@ import { FaClock } from "react-icons/fa";
 import dynamic from 'next/dynamic';
 import Image from "next/image";
 
-const LineChart = dynamic(() => import('../chart').then(mod => mod.LineChart), { ssr: false });
+const LineChart = dynamic(() => import('../../../../../../components/chart').then(mod => mod.LineChart), { ssr: false });
 
 export default function Main() {
     return (

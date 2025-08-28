@@ -1,5 +1,5 @@
 import Image from "next/image";
-import ContentPages from "../../../../../components/content-pages";
+import ContentPages from "./content-pages";
 
 export default function Portal() {
     return (

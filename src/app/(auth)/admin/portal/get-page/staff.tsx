@@ -2,6 +2,7 @@ import { FaUsers } from "react-icons/fa";
 import Button from "../../../../../../components/ui/button";
 import InputField from "../../../../../../components/ui/input";
 import { useFormContext } from "../../../../../../components/context/form-context";
+import Image from "next/image";
 
 export default function Staff() {
     const { setForm } = useFormContext();
@@ -28,7 +29,7 @@ export default function Staff() {
                         <Button
                             label="ADD NEW STAFF"
                             type="submit" className="p-[15px]"
-                            icon={<FaUsers/>} onClick={() => { setForm('addCourse') }}
+                            icon={<FaUsers />} onClick={() => { setForm('addStaff') }}
                             title="Add New Staff"
                         />
                     </div>
@@ -39,39 +40,65 @@ export default function Staff() {
                 <table>
                     <thead>
                         <tr>
-                            <th>SN</th>
-                            <th>COURSE CODE</th>
-                            <th>COURSE NAME</th>
-                            <th>LEVEL</th>
-                            <th>CREDIT UNIT</th>
-                            <th>SEMESTER</th>
-                            <th>CREATED BY</th>
-                            <th>DATE</th>
-                            <th>STATUS</th>
+                            <th>Sn</th>
+                            <th>User Name</th>
+                            <th>Contact</th>
+                            <th>Role</th>
+                            <th>Last Login</th>
+                            <th>Status</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>CSC101</td>
-                            <td>INTRO TO COMPUTER</td>
-                            <td>100</td>
-                            <td>3</td>
-                            <td>FIRST</td>
-                            <td>ADMINISTRATOR</td>
-                            <td>10/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td>
+                                <div className="flex gap-1">
+                                    <div className="w-[25px] h-[25px] bg-black rounded">
+                                        <Image src="/all-images/image-pix/avatar.jpg" width={25} height={25} className="object-cover rounded" alt="Profile Pix" title="Profile Pix" />
+                                    </div>
+                                    <div className="flex flex-col">
+                                        <div className="font-bold">OGUNLEYE OPEYEMI FORTUNE</div>
+                                        <div>STF000000009888888888888</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex flex-col">
+                                    <div>fortunetechglobal001@gmail.com</div>
+                                    <div>09056251889</div>
+                                </div>
+                            </td>
+                            <td>ADMIN</td>
+                            <td>0:0:0:0:0:0:0:0</td>
+                            <td><div className="">ACTIVE</div></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" />
+                            </td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>MTH102</td>
-                            <td>CALCULUS I</td>
-                            <td>100</td>
-                            <td>2</td>
-                            <td>SECOND</td>
-                            <td>HEAD OF DEPARTMENT</td>
-                            <td>11/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td>
+                                <div className="flex gap-1">
+                                    <Image src="/all-images/image-pix/avatar.jpg" width={25} height={25} className="object-cover rounded" alt="Profile Pix" title="Profile Pix" />
+                                    <div className="flex flex-col">
+                                        <div className="font-bold">OGUNLEYE OPEYEMI FORTUNE</div>
+                                        <div>STF000000009888888888888</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div className="flex flex-col">
+                                    <div>fortunetechglobal001@gmail.com</div>
+                                    <div>09056251889</div>
+                                </div>
+                            </td>
+                            <td>ADMIN</td>
+                            <td>0:0:0:0:0:0:0:0</td>
+                            <td><div className="">ACTIVE</div></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" />
+                            </td>
                         </tr>
                     </tbody>
                 </table>

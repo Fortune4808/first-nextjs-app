@@ -1,10 +1,4 @@
-interface FloatingInputProps {
-    label: string;
-    type?: string;
-    value?: string;
-    className?: string;
-    onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import { FloatingInputProps } from "../types/ui"
 
 const InputField = (props:FloatingInputProps) => {
     return (

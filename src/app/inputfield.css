@@ -44,3 +44,10 @@
     border-radius: 3px;
     padding: 3px 5px;
 }
+
+select {
+  appearance: none;        /* For modern browsers */
+  -webkit-appearance: none; /* For Safari/Chrome */
+  -moz-appearance: none;    /* For Firefox */
+}
+

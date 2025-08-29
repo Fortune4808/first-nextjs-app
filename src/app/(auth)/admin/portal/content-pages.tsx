@@ -47,11 +47,14 @@ function ContentForm() {
     const MyProfileForm = dynamic(() => import("./get-form/myprofile"), {
         loading: () => <Loader />,
     });
+     const AddNewStaffForm = dynamic(() => import("./get-form/add-staff"), {
+        loading: () => <Loader />,
+    });
 
     return (
         <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/40">
-            {/* {form === 'addStaff' && <AddDepartmentForm onClose={handleClose} />} */}
             {form === 'myProfile' && <MyProfileForm id={id ?? ''} onClose={handleClose} />}
+            {form === 'addStaff' && <AddNewStaffForm onClose={handleClose}/>}
             {form === 'scan' && <Scan id={id ?? ''} onClose={handleClose} />}
         </div>
     );

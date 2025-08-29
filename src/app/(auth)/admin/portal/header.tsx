@@ -3,18 +3,14 @@ import Image from "next/image"
 import { AiOutlineDashboard } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { LuSchool } from "react-icons/lu";
-import { FaBook } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import { IoSettingsOutline } from "react-icons/io5";
 import { IoMdNotificationsOutline } from "react-icons/io";
-import { BiSpreadsheet } from "react-icons/bi";
-import { IoSchool } from "react-icons/io5";
 import { usePage } from "../../../../../components/context/page-context";
 import { useRef, useState, useEffect } from 'react';
 import Button from "../../../../../components/ui/button";
 import { IoIosLogOut } from "react-icons/io";
 import { useFormContext } from "../../../../../components/context/form-context";
-import { useSideNav } from "../../../../../components/context/side-nav-context";
 import { User } from "../../../../../components/types/user";
 import { capitalizeWords } from "../../../../../components/stringutils";
 
@@ -149,7 +145,7 @@ function SideNav() {
                 </li>
 
                 <li title="Staff" className="w-full flex flex-col items-center text-center py-[15px] border-b border-[#DBEBBE] hover:border-l-[2px] border-l-[var(--border-left-color)] hover:bg-[#F8F8F8] hover:text-[var(--primary-color)] cursor-pointer" onClick={() => setPage('staff')}>
-                    <FaBook className="text-[20px]" />
+                    <FaUsersGear className="text-[20px]" />
                     <span>Staff</span>
                 </li>
 

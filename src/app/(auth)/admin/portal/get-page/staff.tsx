@@ -71,7 +71,7 @@ export default function Staff() {
                             </td>
                             <td>ADMIN</td>
                             <td>0:0:0:0:0:0:0:0</td>
-                            <td><div className="">ACTIVE</div></td>
+                            <td><span className="bg-[var(--active-color)] text-white px-2 py-1 rounded font-semibold">ACTIVE</span></td>
                             <td>
                                 <Button label="VIEW" title="VIEW" />
                             </td>
@@ -95,7 +95,7 @@ export default function Staff() {
                             </td>
                             <td>ADMIN</td>
                             <td>0:0:0:0:0:0:0:0</td>
-                            <td><div className="">ACTIVE</div></td>
+                            <td><span className="bg-[var(--inactive-color)] text-red-700 px-2 py-1 rounded italic">INACTIVE</span></td>
                             <td>
                                 <Button label="VIEW" title="VIEW" />
                             </td>

@@ -18,8 +18,8 @@ export default function AddStaff({ onClose }: AddStaffProps) {
 
             <div className="absolute w-[100%] h-[calc(100%-50px)] overflow-auto">
                 <div className="w-[90%] m-auto">
-                    <div className="mt-[15px] p-[10px] bg-[#F2FDF9] border border-solid border-[#BCDBCB] font-title">
-                        <div className="text-[#A1A2A6]">Kindly fill the form below to <span className="text-[#579EC8] font-bold">Add New Staff</span></div>
+                    <div className="mt-[15px] p-[10px] bg-[#F3FCF7] border border-solid border-[#BCDBCB] font-title rounded">
+                        <div className="text-[#838985]">Kindly fill the form below to <span className="text-[#578BB0] font-bold">Add New Staff</span></div>
                     </div>
 
                     <div className="my-5 flex flex-col gap-3">

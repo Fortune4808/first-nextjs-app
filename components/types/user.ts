@@ -9,7 +9,7 @@ export type NavContextType = {
     handleClose: () => void;
 };
 
-export type FormType = 'addStaff' | 'addDepartment' | 'myProfile' | 'addCourse' | 'scan' | null;
+export type FormType = 'addStaff' | 'schoolDashboard' | 'addDepartment' | 'myProfile' | 'scan' | null;
 
 export type FormContextType = {
     form: FormType;

@@ -25,6 +25,8 @@
     --foreground: #171717;
     --primary-color: #002B00;
     --border-left-color: #be1d1d;
+    --active-color: #10B981;
+    --inactive-color: #FEE2E2;
 }
 
 @theme inline {

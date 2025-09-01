@@ -9,24 +9,33 @@ import Header from "@/app/(auth)/admin/portal/header";
 import Session from "./get-side-nav/session";
 import Scan from "./get-form/scan";
 
+const MainDashboard = dynamic(() => import("./get-page/main"), {
+    loading: () => <Loader />,
+});
+const StaffPage = dynamic(() => import("./get-page/staff"), {
+    loading: () => <Loader />,
+});
+const SchoolPage = dynamic(() => import("./get-page/school"), {
+    loading: () => <Loader />,
+});
+const MyProfileForm = dynamic(() => import("./get-form/myprofile"), {
+    loading: () => <Loader />,
+});
+const AddNewStaffForm = dynamic(() => import("./get-form/add-staff"), {
+    loading: () => <Loader />,
+});
+const SchoolDashboard = dynamic(() => import("./get-form/schooldashboard"), {
+    loading: () => <Loader />,
+});
+
 function ContentBody() {
     const { page } = usePage();
-
-    const MainDashboard = dynamic(() => import("./get-page/main"), {
-        loading: () => <Loader />,
-    });
-    const StaffPage = dynamic(() => import("./get-page/staff"), {
-        loading: () => <Loader />,
-    });
-    const SchoolPage = dynamic(() => import("./get-page/school"), {
-        loading: () => <Loader />,
-    });
 
     return (
         <>
             <div className="absolute pl-[90px] top-[70px] h-full w-full">
                 <div key={page} className="w-full h-[calc(100%-80px)] flex justify-center overflow-auto scrollbar-hidden animate__animated animate__fadeIn">
-                    <div className="w-[99%] h-full pt-[5px]">
+                    <div className="w-[97%] h-full pt-[5px]">
                         {page === 'dashboard' && <MainDashboard />}
                         {page === 'staff' && <StaffPage />}
                         {page === 'school' && <SchoolPage />}
@@ -41,21 +50,12 @@ function ContentForm() {
     const { form, handleClose, id } = useFormContext();
     if (!form) return null;
 
-    const AddDepartmentForm = dynamic(() => import("./get-form/add-department"), {
-        loading: () => <Loader />,
-    });
-    const MyProfileForm = dynamic(() => import("./get-form/myprofile"), {
-        loading: () => <Loader />,
-    });
-     const AddNewStaffForm = dynamic(() => import("./get-form/add-staff"), {
-        loading: () => <Loader />,
-    });
-
     return (
         <div className="fixed inset-0 z-50 backdrop-blur-sm bg-black/40">
             {form === 'myProfile' && <MyProfileForm id={id ?? ''} onClose={handleClose} />}
-            {form === 'addStaff' && <AddNewStaffForm onClose={handleClose}/>}
+            {form === 'addStaff' && <AddNewStaffForm onClose={handleClose} />}
             {form === 'scan' && <Scan id={id ?? ''} onClose={handleClose} />}
+            {form === 'schoolDashboard' && <SchoolDashboard id={id ?? ''} onClose={handleClose} />}
         </div>
     );
 }
@@ -102,6 +102,5 @@ export default function ContentPages() {
                 </FormProvider>
             </PageProvider>
         </NavProvider>
-
     );
 }

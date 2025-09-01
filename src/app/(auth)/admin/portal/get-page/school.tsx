@@ -2,41 +2,16 @@ import { LuSchool } from "react-icons/lu";
 import Button from "../../../../../../components/ui/button";
 import InputField from "../../../../../../components/ui/input";
 import { useFormContext } from "../../../../../../components/context/form-context";
-import { useState, useEffect } from "react";
 
 export default function School() {
     const { setForm } = useFormContext();
-
-    const [status, setStatus] = useState([]);
-
-    useEffect(() => {
-        async function loadStatus() {
-            try {
-                const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/status`, {
-                    headers: { 'x-api-key': process.env.NEXT_PUBLIC_API_KEY ?? ""},
-                });
-
-                if (!res.ok) {
-                    throw new Error(`Failed to fetch status: ${res.status}`);
-                }
-
-                const json = await res.json();
-                setStatus(json.data);
-
-            } catch (error) {
-                console.error("Failed to fetch status:", error);
-            }
-        }
-
-        loadStatus();
-    }, []);
 
     return (
         <div className="flex flex-col gap-2 pb-[20px]">
             <div className="w-full min-h-[80px] bg-white/90 rounded flex justify-center items-center text-black">
                 <div className="w-[98%] flex justify-between items-center">
                     <div className="flex flex-col">
-                        <div className="flex items-center gap-1 font-bold"><LuSchool className="text-[var(--primary-color)]" />Department</div>
+                        <div className="flex items-center gap-1 font-bold"><LuSchool className="text-[var(--primary-color)]" />School</div>
                         <div className="flex items-center gap-1 text-[#333] text-[13px]">Active:
                             <span className="text-[var(--primary-color)]">0</span>{" "}| Suspended:<span className="text-[var(--primary-color)]">0</span>
                         </div>
@@ -44,17 +19,15 @@ export default function School() {
 
                     <div className="w-[50%] flex items-center gap-2">
                         <InputField
-                            label="Type here to search department"
+                            label="Type here to search school"
                             className="!h-[50px]"
-                        // value={}
-                        // onChange={(e) => setPassowrd(e.target.value)}
                         />
 
                         <Button
-                            label="ADD NEW DEPARTMENT"
+                            label="ADD NEW SCHOOL"
                             type="submit" className="p-[15px]"
                             icon={<LuSchool/>} onClick={() => { setForm('addDepartment') }}
-                            title="ADD NEW DEPARTMENT"
+                            title="ADD NEW SCHOOL"
                         />
                     </div>
                 </div>
@@ -64,13 +37,14 @@ export default function School() {
                 <table>
                     <thead>
                         <tr>
-                            <th>SN</th>
-                            <th>DEPARTMENT NAME</th>
-                            <th>CREATED BY</th>
-                            <th>NUMBER OF STAFF</th>
-                            <th>NUMBER OF STUDENTS</th>
-                            <th>DATE</th>
-                            <th>STATUS</th>
+                            <th>Sn</th>
+                            <th>School Name</th>
+                            <th>Created By</th>
+                            <th>Number Of Staff</th>
+                            <th>Number Of Students</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>View</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,7 +55,10 @@ export default function School() {
                             <td>10</td>
                             <td>10</td>
                             <td>10/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td><span className="bg-[var(--active-color)] text-white px-2 py-1 rounded font-semibold">ACTIVE</span></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" onClick={() => setForm('schoolDashboard')} />
+                            </td>
                         </tr>
 
                         <tr>
@@ -91,7 +68,10 @@ export default function School() {
                             <td>10</td>
                             <td>10</td>
                             <td>10/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td><span className="bg-[var(--active-color)] text-white px-2 py-1 rounded font-semibold">ACTIVE</span></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" />
+                            </td>
                         </tr>
 
                         <tr>
@@ -101,7 +81,10 @@ export default function School() {
                             <td>10</td>
                             <td>10</td>
                             <td>10/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td><span className="bg-[var(--inactive-color)] text-red-700 px-2 py-1 rounded italic">INACTIVE</span></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" />
+                            </td>
                         </tr>
 
                         <tr>
@@ -111,7 +94,10 @@ export default function School() {
                             <td>10</td>
                             <td>10</td>
                             <td>10/05/2025</td>
-                            <td>ACTIVE</td>
+                            <td><span className="bg-[var(--inactive-color)] text-red-700 px-2 py-1 rounded italic">INACTIVE</span></td>
+                            <td>
+                                <Button label="VIEW" title="VIEW" />
+                            </td>
                         </tr>
                     </tbody>
                 </table>
